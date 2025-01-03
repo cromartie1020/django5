@@ -7,3 +7,4 @@ class EmailPostForm(forms.Form):
         required=False,
         widget=forms.Textarea
     )
+    
