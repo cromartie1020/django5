@@ -81,4 +81,4 @@ def post_share(request, post_id):
             'form':form,
             'sent':sent
         }    
- 
+    return render(request,'blog/share.html', context) 
