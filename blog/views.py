@@ -53,7 +53,7 @@ def post_share(request, post_id):
                       from_email='cromarties2913@gmailcom',
                       recipient_list=[cd['to']]
             )
-            send = True    
+            sent = True    
         else:
             form = EmailPostForm()
         context={
