@@ -39,26 +39,37 @@ def post_detail(request, year, month, day, post):
     )
 
 def post_share(request, post_id):
+    # Retrieve post by id. 
     post=get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
+    
     sent=False
     if request.method == 'POST':
         form=EmailPostForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            post_url=request.build_absolute_url(post.get_absolute_url())
-            subject=f'{cd["name"]} recommends you read {post.title}'
-            message=f'Read {"post.title"} at {post_url}\n\n {cd["name"]}\'s comments:{cd["comments"]}'
+            post_url=request.build_absolute_uri(
+                post.get_absolute_url()
+            )
+            subject = (f"{cd['name']} ({cd['email']}) " 
+                      f"recommends you read {post.title}"
+            )        
+            message = (
+                f"Read {'post.title'} at {post_url}\n\n" 
+                f"{cd['name']}\'s comments:{cd['comments']}"
+            )    
+                
             send_mail(subject=subject,
                       message=message,
                       from_email='cromarties2913@gmailcom',
                       recipient_list=[cd['to']]
             )
             sent = True    
-        else:
-            form = EmailPostForm()
-        context={
-            'post':post,
-            'form':form,
-            'sent':sent
-        }    
+    else:
+        form = EmailPostForm()
+            
+    context={
+        'post':post,
+        'form':form,
+        'sent':sent
+    }    
     return render(request,'blog/share.html', context) 
