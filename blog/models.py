@@ -3,6 +3,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 class PublishedManager(models.Manager):
@@ -11,6 +12,7 @@ class PublishedManager(models.Manager):
             super().get_queryset().filter(status=Post.Status.PUBLISHED)
         )
 class Post(models.Model):
+   
     class Status(models.TextChoices):
         DRAFT='DF','Draft'
         PUBLISHED='PB','Published'
@@ -27,8 +29,10 @@ class Post(models.Model):
                               choices =Status,
                               default=Status.DRAFT
     )
+    
     objects= models.Manager()      # The Default manager
     published=PublishedManager()  # The custom manager. 
+    tags = TaggableManager()
     class Meta:
         ordering =['-publish']
         indexes = [ models.Index(fields=['-publish'])]
