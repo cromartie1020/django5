@@ -41,8 +41,7 @@ def post_detail(request, year, month, day, post):
 def post_share(request, post_id):
     # Retrieve post by id. 
     post=get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
-    print('post: ', post)
-    print('post: ', post)
+    
     sent=False
     if request.method == 'POST':
         form=EmailPostForm(request.POST)
@@ -65,11 +64,12 @@ def post_share(request, post_id):
                       recipient_list=[cd['to']]
             )
             sent = True    
-        else:
-            form = EmailPostForm()
-        context={
-            'post':post,
-            'form':form,
-            'sent':sent
-        }    
+    else:
+        form = EmailPostForm()
+            
+    context={
+        'post':post,
+        'form':form,
+        'sent':sent
+    }    
     return render(request,'blog/share.html', context) 
