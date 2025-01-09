@@ -1,3 +1,7 @@
 asgiref==3.8.1
 Django==5.1.4
+<<<<<<< HEAD
+=======
+django-taggit==6.1.0
+>>>>>>> socialWebsite
 sqlparse==0.5.3
