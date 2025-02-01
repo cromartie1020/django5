@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post
+from .models import Post, Comment
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -13,3 +13,4 @@ class PostAdmin(admin.ModelAdmin):
     ordering=['status','publish']
     show_facets=admin.ShowFacets.ALWAYS
     
+admin.site.register(Comment)    
