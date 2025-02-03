@@ -4,6 +4,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
 from taggit.managers import TaggableManager
+from tinymce.models import HTMLField
 
 
 class PublishedManager(models.Manager):
@@ -21,7 +22,7 @@ class Post(models.Model):
                              unique_for_date='publish'
     )
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name='blog_posts')
-    body  = models.TextField(null=True, blank=True)
+    body  = HTMLField(null=True, blank=True)
     publish = models.DateTimeField(default = timezone.now)
     created = models.DateTimeField(auto_now_add = True)
     updated = models.DateTimeField(auto_now=True)
@@ -58,7 +59,7 @@ class Comment(models.Model):
     )
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    body = models.TextField()
+    body = HTMLField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)

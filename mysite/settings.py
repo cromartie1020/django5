@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'taggit',
     'tinymce',
+     "crispy_forms",
+    "crispy_bootstrap5",
     'blog.apps.BlogConfig',
 ]
 
@@ -125,3 +127,6 @@ EMAIL_HOST_USER     = config["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = config["EMAIL_HOST_PASSWORD"]
 EMAIL_USE_TLS       = True
  
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5" 

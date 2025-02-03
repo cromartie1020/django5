@@ -17,5 +17,9 @@
     </p>
     {{ post.body|truncatewords:30|linebreaks }}
   {% endfor %}
+  <a href="{% url 'post_new' %}">
+    <h2>Add a new post. </h2>
+
+  </a>  
   {% include 'blog/pagination.html' with page=posts %}
 {% endblock %}

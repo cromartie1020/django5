@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect 
 from django.http import Http404
 from .models import Post
 from .forms import EmailPostForm, CommentForm, Comment
@@ -8,6 +8,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models import Count
 from taggit.models import Tag
+from . forms import PostForm
 
 
 def post_list(request):
@@ -132,3 +133,23 @@ def post_search(request):
             'results': results
         },
     )
+
+def post_update(request, id):
+    pass
+
+def post_new(request):
+    if request.method ==('POST' or None):
+        form = PostForm(request.POST) 
+        
+        if form.is_valid():
+            form.save()
+            
+            return redirect('post_list')
+    else:
+        form=PostForm()
+   
+    context = {
+        'form':form
+    }         
+    
+    return render(request, 'blog/post_new.html', context)
