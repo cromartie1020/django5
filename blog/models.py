@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.urls import reverse
 from taggit.managers import TaggableManager
 from tinymce.models import HTMLField
+#from ckeditor.fields import RichTextField
 
 
 class PublishedManager(models.Manager):
@@ -59,7 +60,8 @@ class Comment(models.Model):
     )
     name = models.CharField(max_length=80)
     email = models.EmailField()
-    body = HTMLField()
+    body = HTMLField(null=True)
+    #body = RichTextField(blank=True, null= True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
