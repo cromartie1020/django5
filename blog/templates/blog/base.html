@@ -24,8 +24,10 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         {% include 'blog/navbar.html' %}
+        
        
-        <div id='content' > 
+        <div id='content' class = 'container ml-5 m-5'>
+
             {%  block content %}
             {% endblock %}    
         </div>

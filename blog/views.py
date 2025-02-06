@@ -14,7 +14,7 @@ from . forms import PostForm
 def post_list(request):
     post_list = Post.published.all()
     # Pagingator with 3 posts per page
-    paginator = Paginator(post_list, 3)
+    paginator = Paginator(post_list, 2)
     page_number = request.GET.get('page',1)
     try:
         posts = paginator.page(page_number)
