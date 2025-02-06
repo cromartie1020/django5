@@ -31,9 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
-    'taggit',
     'tinymce',
-     "crispy_forms",
+    "crispy_forms",
     "crispy_bootstrap5",
     'blog.apps.BlogConfig',
     #'ckeditor',                  # This is a rich editor 
