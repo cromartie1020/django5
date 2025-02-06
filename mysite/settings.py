@@ -31,7 +31,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
-    'blog.apps.BlogConfig'
+    'taggit',
+    'tinymce',
+     "crispy_forms",
+    "crispy_bootstrap5",
+    'blog.apps.BlogConfig',
+    #'ckeditor',                  # This is a rich editor 
 ]
 
 MIDDLEWARE = [
@@ -100,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -124,3 +129,14 @@ EMAIL_HOST_USER     = config["EMAIL_HOST_USER"]
 EMAIL_HOST_PASSWORD = config["EMAIL_HOST_PASSWORD"]
 EMAIL_USE_TLS       = True
  
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5" 
+#TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
+
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 300,
+    'plugins': 'advlist autolink lists link image charmap print preview anchor',
+    'toolbar': 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+}
