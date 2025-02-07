@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.urls import reverse
 from taggit.managers import TaggableManager
 from tinymce.models import HTMLField
+from datetime import datetime
+ 
 #from ckeditor.fields import RichTextField
 
 
@@ -24,7 +26,7 @@ class Post(models.Model):
     )
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name='blog_posts')
     body  = HTMLField(null=True, blank=True)
-    publish = models.DateTimeField(default = timezone.now)
+    publish = models.DateTimeField(default =timezone.now)
     created = models.DateTimeField(auto_now_add = True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2,

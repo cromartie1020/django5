@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     'blog.apps.BlogConfig',
     #'ckeditor',                  # This is a rich editor 
+    
 ]
 
 MIDDLEWARE = [
@@ -104,11 +105,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/New_York'
+TIME_ZONE = 'America/New_York' # Need to change this
+#TIME_ZONE = 'UTC'
+
 
 USE_I18N = True
 
-USE_TZ = True
+#USE_TZ = False
+USE_TZ = True                  # Change this
 
 
 # Static files (CSS, JavaScript, Images)
