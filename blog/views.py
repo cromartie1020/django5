@@ -153,3 +153,6 @@ def post_new(request):
     }         
     
     return render(request, 'blog/post_new.html', context)
+
+def tiny(request):
+    return render(request, 'blog/tiny.html')

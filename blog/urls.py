@@ -8,5 +8,6 @@ urlpatterns = [
     path('<int:post_id>/comment/', views.post_comment, name='post_comment' ),
     path('post_update/<int:id>/', views.post_update, name='post_update'),
     path('post_new/', views.post_new, name='post_new'),
+    path('tiny/', views.tiny, name='tiny'),
 ]
                         
