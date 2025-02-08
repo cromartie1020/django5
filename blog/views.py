@@ -153,6 +153,18 @@ def post_new(request):
     }         
     
     return render(request, 'blog/post_new.html', context)
-
+def post_update(request, id):
+    post = Post.objects.get(id=id)
+    form = PostForm(request.POST or None, instance = post)
+    if form.is_valid():
+        post=form.save(commit=False)
+        post.save()
+        return redirect('post_list')
+    
+    context = {
+        'form':form,  
+        
+    }               
+    return render(request, 'blog/post_update.html', context)      
 def tiny(request):
     return render(request, 'blog/tiny.html')
